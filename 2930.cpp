@@ -47,8 +47,6 @@ int find_middle(vector<int> v){
 
 
 //top k 
-
-
 vector<int> find_topk(const vector<int> v,int k){
 	mutiset<int,greater<int>> setk;
 	if (v.size() <k)
@@ -71,6 +69,31 @@ vector<int> find_topk(const vector<int> v,int k){
 	for(auto u : setk){
 		re.push_back(u);
 	}
-
 }
+
+// 连续子数组的最大和,动态规划
+int max_subarray(vector<int> v){
+	int last = 0；
+	int max = 0；
+	if (v.empty())
+	{
+		return 0;
+	}
+	last = max = v[1];
+	auto it = v.begin();
+	it++;
+	for (; it != v.end; ++it)
+	{
+		if (last > 0)
+		{
+			last = std::max(*it,last+*it);
+		}
+		if (last > max)
+		{
+			max = last;
+		}
+	}
+	return max;
+}
+
 
