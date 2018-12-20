@@ -44,3 +44,33 @@ int find_middle(vector<int> v){
 		}
 	}
 }
+
+
+//top k 
+
+
+vector<int> find_topk(const vector<int> v,int k){
+	mutiset<int,greater<int>> setk;
+	if (v.size() <k)
+	{
+		return v;
+	}
+	for (auto u : v)
+	{
+		if (setk.size() < k)
+		{
+			setk.insert(u);
+		}
+		if (u < *(setk.begin())
+		{
+			setk.erase(setk.begin());
+			setk.insert(u);
+		}
+	}
+	vector<int> re;
+	for(auto u : setk){
+		re.push_back(u);
+	}
+
+}
+
