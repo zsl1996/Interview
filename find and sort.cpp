@@ -32,7 +32,7 @@ int partition(const vector<int>& v, int l, int r){
 	return p + 1;
 }
 
-//面试8 q_find + 旋转数组,有序数组最开始几个元素换到末尾，find minima
+//面试8 q_find + 旋转数组,有序数组（非严格递增）最开始几个元素换到末尾，find minima，
 
 int spinvector_find(vector<int> v,int value)
 {
@@ -46,7 +46,9 @@ int spinvector_find(vector<int> v,int value)
 		p = l + (r - l)/2;
 		if(v[p] > v[r]) l = p + 1;
 		if(v[p] < v[r]) r = p - 1;
+		if（v[p] ==v[r]) return min_element(v.begin(),v.end()) - ve.begin();
+
+}
 	}
-	if(l > p) return l;
-	else return p;
+	if(l >= p) return l; //考虑反转了0个元素
 }
