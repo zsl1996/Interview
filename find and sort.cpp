@@ -32,6 +32,66 @@ int partition(const vector<int>& v, int l, int r){
 	return p + 1;
 }
 
+
+
+
+
+//mergesort 
+
+void merge(vector<int>& v,int l, int p, int r){
+	vector<int> temp;
+	int l2 = p + 1;
+	int i = 0;
+	while(l <= p && l2 <= r){
+		if (v[l] < v[l2]){
+			temp.back(v[l]);
+			l++;
+		}
+		else{
+			temp.push_back(v[l2]);
+			l2++;
+		}
+	}
+	if (l > p)
+	{	int j = 0;
+		for (auto u : temp)
+		{
+			v[l+j] = u;
+		}
+	}
+	else{
+		for(;p >= l;p--,r--){
+			v[r] = v[p];
+		}
+		int j = 0;
+		for (auto u : temp)
+		{
+			v[l+j] = u;
+		}
+	}
+}
+
+
+vector<int> mergesort(vector<int> v,int l,int r){
+	int p = l + (r - l)/2;
+	mergesort(v,l,p);
+	mergesort(v,p+1,r);
+	merge(v,l,p,r);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //面试8 q_find + 旋转数组,有序数组（非严格递增）最开始几个元素换到末尾，find minima，
 
 int spinvector_find(vector<int> v,int value)
@@ -47,8 +107,6 @@ int spinvector_find(vector<int> v,int value)
 		if(v[p] > v[r]) l = p + 1;
 		if(v[p] < v[r]) r = p - 1;
 		if（v[p] ==v[r]) return min_element(v.begin(),v.end()) - ve.begin();
-
-}
 	}
 	if(l >= p) return l; //考虑反转了0个元素
 }
