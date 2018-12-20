@@ -32,4 +32,21 @@ int partition(const vector<int>& v, int l, int r){
 	return p + 1;
 }
 
-//q_find + 旋转数组
+//面试8 q_find + 旋转数组,有序数组最开始几个元素换到末尾，find minima
+
+int spinvector_find(vector<int> v,int value)
+{
+	if (v.empty()){
+		throw std::exception("erro v.size()");
+	}
+	int l = 0;
+	int r = v.size() -1;
+	int p = 0;
+	while(v[l] >= v[r]){
+		p = l + (r - l)/2;
+		if(v[p] > v[r]) l = p + 1;
+		if(v[p] < v[r]) r = p - 1;
+	}
+	if(l > p) return l;
+	else return p;
+}
