@@ -96,4 +96,11 @@ int max_subarray(vector<int> v){
 	return max;
 }
 
+//1 dao n 1出现的次数
 
+int num(int n){
+	
+
+
+
+}
