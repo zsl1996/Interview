@@ -100,30 +100,6 @@ bool find(unordered_mutiset s , int u){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //垃圾做法，存值
 vector<unordered_multiset<int>> array_divide(vector<int> v){
 	vector<unordered_multiset<int>> sv(2);
