@@ -76,7 +76,6 @@ float twostring_similarity(string s1, string s2){
 			i++;
 			j++;
 		}
-
 	}	
 	return 1/float(cost[i][j].first);	
 }
